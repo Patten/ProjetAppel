@@ -1,0 +1,259 @@
+﻿/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+/* Général */
+body {
+	color: #e3e3e3;
+	background: #1e1e1e;
+	line-height: 1;
+	font-family: 'Arial Black',Gadget,sans-serif;
+}
+
+header{
+	width:950px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+a {
+	color: #e3e3e3;
+	text-decoration:none;
+	
+}
+a:hover, a:focus {
+	color: #FF4C00;
+}
+
+/* Navigation */
+#menu {
+	background: #000115;
+}
+#menu a {
+	margin : 10px;
+	/*padding: 0px;*/
+	color: #e2e4ff;
+}
+#menu a:hover, #menu a:focus {
+	background: #000000;
+	color: #FF4C00;
+}
+
+/* Contenu principal */
+#content {
+	color: #01020f;
+	background: #d3d4e0;
+	text-align:center;
+	font-family: 'Arial';
+}
+#content a {
+	color: #332510;
+}
+#content a:hover, #content a:focus {
+	color: #6E5122;
+}
+#content strong {
+	color: #181A12;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+
+/* --- POSITIONNEMENT --- */
+
+/* Page */
+body {
+	padding: 20px 50px; /* Voir -> Note 1 ci-dessous */
+}
+#wrap{ /*Contient le menu et le content*/
+	margin-left:auto;
+	margin-right:auto;
+	width:950px;
+}
+
+.deco{
+	width:950px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:10px;
+	text-align:right;
+	text-decoration: none;
+	list-style: none;
+}
+
+/* Menu de navigation */
+#menu{
+	width : 15%;
+	float:left;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 50px;
+	text-align:center;
+}
+#menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#menu a {
+	display: block;
+	height: 1%; 
+	padding: 6px 20px 20px 20px;
+	line-height: 1.5;
+	font-size: .9em;
+	text-decoration: none;
+}
+
+/* Contenu */
+#content {
+	margin-left: 20%; 
+	margin-bottom: 20px;
+	padding: 10px 20px;
+	
+}
+#content > :first-child {
+	margin-top: 10px;
+}
+#content p, #content li {
+	line-height: 1.5;
+}
+
+
+#fieldset{
+	margin-left:auto;
+	margin-right:auto;
+	width:750px;
+	margin-top:100px;
+}
+.formulaire{
+	margin-left:auto;
+	margin-right:auto;
+	width:300px;
+	background-color:#01020f;
+	text-align:right;
+}
+
+.photo{ /* div contenant photo, nom et prénom du trombi */
+
+	float:left;
+	margin:15px;
+	width:100px;
+	height:140px;
+	background-color:#eed;
+
+}
+
+.abs{ /*recouvre la photo de l'étudiant quand il est absent*/
+	position:absolute;
+	margin:-132px 0 0 0;
+	width:100px;
+	height:140px;
+	background-color:#222;
+	opacity:0;
+
+}
+
+.clear{
+	clear : both;
+}
+
+.affErreur{
+	width:950px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+/* PAGES ABSENCE */
+
+.uneAbsence{
+	width: 92%;
+	margin-left:auto;
+	margin-right:auto;
+	margin: 2% 2% 2% 2%;
+	padding: 2% 2% 2% 2%;  
+	background-color: #EEE;
+
+	/*radius : arrondi */
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+
+
+/* FIN PAGES ABSENCE */
+
+
+
+
+/* PAGES GESTION */
+.headAbs{
+	width: 100%;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+}
+.headGest a{
+	padding : 5px 20px 5px 20px;
+	font-family: 'Arial Black',Gadget,sans-serif;
+	text-decoration:none;
+}
+.headGest a:hover{
+	padding : 5px 20px 5px 20px;
+	background:#fff;
+}
+
+.formgest{
+	width:100%;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:right;
+}
+
+.right {
+	width:45%;
+	float: right;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.left {
+	width:45%;
+	float: left;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
+
+/* FIN PAGES GESTION */
