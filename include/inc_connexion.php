@@ -1,5 +1,8 @@
 ﻿<?php
 
+	/* test de git hub*/
+	echo 'coucou';
+
 	/*connection pour Windows --> WAMP */
 	$serveur="localhost";
 	$utilisateur="root";
