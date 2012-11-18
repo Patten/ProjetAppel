@@ -1,7 +1,17 @@
 <?php
 require('../include/fpdf/fpdf.php');
 
-//connexion à la bd
+$champFr = array(	'jourAbs' => 'Date',
+					'hDebAbs' => 'Heure de dÃ©but du cours',
+					'hFinAbs' => 'Heure de fin du cours',
+					'libCoursAbs' => 'Nom du cours',
+					'justifAbs' => 'Justification',
+					'motifAbs' => 'Motif',
+					'nomUti' => 'Nom de l\'intervenant',
+					'prenomUti' => 'PrÃ©nom de l\'intervenant'
+);
+
+//connexion Ã  la bd
 /*connection pour Windows --> WAMP */
 	$serveur="localhost";
 	$utilisateur="root";
@@ -17,9 +27,9 @@ require('../include/fpdf/fpdf.php');
 		$connect=mysql_connect($serveur, $utilisateur, $mdp);
 	}
 	
-	mysql_select_db("projet_appel") or die("echec à la connection");
+	mysql_select_db("projet_appel") or die("echec Ã  la connection");
 
-//déclaration du document pdf
+//dÃ©claration du document pdf
 $pdf = new FPDF('P','mm','A4');
 $pdf->AddPage();
 $pdf->SetFont('Arial','B',16);
@@ -49,8 +59,8 @@ while($ligne=mysql_fetch_array($exereq))
 	{
 		if ($j%2)
 		{
-			$pdf->Cell(30,6, mysql_field_name($exereq, $i),1); 
-            $pdf->Cell(165,6,$col,1);
+			$pdf->Cell(50,6, utf8_decode ($champFr[mysql_field_name($exereq, $i)]),1); 
+            $pdf->Cell(145,6, utf8_decode ($col),1);
 			$pdf->Ln();
 			
 			$i++;

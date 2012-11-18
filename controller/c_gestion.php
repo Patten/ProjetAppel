@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 //vérification des champs concernants le cours et appel de trombi pour selectionner les absents
 
 //include des models
@@ -6,26 +6,13 @@ include_once("model/m_g_etudiant.php");
 include_once("model/m_g_utilisateur.php");
 include_once("model/m_gestion.php");
 
-//include des vues
-function affAll(){
-	include("vues/v_menu.php");
-	if (!($_GET['idEtu'] >= -1) && !($_GET['idUti'] >= -1))
-		include("vues/v_gestion.php");
-	else
-	{
-		if ($_GET['idEtu'] >= -1)
-			include("vues/v_g_etudiant.php");
-		else
-			include("vues/v_g_utilisateur.php");
-	}
-}
-
 
 if(!isset($_POST['do'])) 	{$_POST['do']='';}
 if(!isset($_POST['button'])) {$_POST['button']='';}
 if(!isset($_POST['qui'])) 	{$_POST['qui']='';}
+if(!isset($_GET['qui'])) 	{$_GET['qui']='etudiant';}
 
-echo "<section class='affErreur'>";
+$messError = "<section class='affErreur'>L'un des champs à mal été rempli</section>";
 
 if($_POST['qui']=='etudiant')
 {
@@ -37,7 +24,7 @@ if($_POST['qui']=='etudiant')
 		}
 		else
 		{
-			echo "L'un des champs à mal été rempli";
+			echo $messError;
 		}
 	}
 
@@ -49,7 +36,7 @@ if($_POST['qui']=='etudiant')
 		}
 		else
 		{
-			echo "L'un des champs à mal été rempli";
+			echo $messError;
 		}	
 	}
 
@@ -68,7 +55,7 @@ else if($_POST['qui']=='utilisateur')//si utilisateur
 		}
 		else
 		{
-			echo "L'un des champs à mal été rempli";
+			echo $messError;
 		}	
 	}
 
@@ -81,7 +68,7 @@ else if($_POST['qui']=='utilisateur')//si utilisateur
 		}
 		else
 		{
-			echo "L'un des champs à mal été rempli";
+			echo $messError;
 		}	
 	}
 
@@ -97,13 +84,22 @@ if($_POST['qui']=='spe')
 		if(verifSpe())//contrôles saisies
 			ajouterSpe();
 		else
-			echo "L'un des champs à mal été rempli";
+			echo $messError;
 	}
 }
 
-echo "</section>";
+echo "";
 
 /* Aff la vue */
-affAll();
+include("vues/v_menu.php");
+if (!($_GET['idEtu'] >= -1) && !($_GET['idUti'] >= -1))
+	include("vues/v_gestion.php");
+else
+{
+	if ($_GET['idEtu'] >= -1)
+		include("vues/v_g_etudiant.php");
+	else
+		include("vues/v_g_utilisateur.php");
+}
 
 ?>

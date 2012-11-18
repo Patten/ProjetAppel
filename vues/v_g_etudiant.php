@@ -1,4 +1,4 @@
-﻿<section>
+<section>
 
 		<?php 
 			if ($_GET['idEtu'] >=0)		
@@ -57,7 +57,7 @@
 						<label for="mail">Mail</label>						<input name='mail' id='mail' type='text'  placeholder="..."			<?php if($mod) echo "value='".$etu['mailEtu']."'"; ?> size='30'>	<br>
 						
 						<label for="ad">Adresse</label>				<input name='ad' id='ad' type='text' placeholder="..."				<?php if($mod) echo "value='".$etu['libAdEtu']."'"; ?> size='30'>		<br>
-						<label for="cp">Code Postal</label>			<input name='cp' id='cp' type='text' placeholder="..."				<?php if($mod) echo "value='".$etu['cpEtu']."'"; ?> size='3'>
+						<label for="cp">Code Postal</label>			<input name='cp' id='cp' type='text' placeholder="..."				<?php if($mod) echo "value='".$etu['cpEtu']."'"; ?> size='3'>			<br>
 						<label for="ville">Ville</label>			<input name='ville' id='ville' type='text' placeholder="..."		<?php if($mod) echo "value='".$etu['villeEtu']."'"; ?> size='15'>		<br>
 						
 						<label for="telf">Année d'étude</label>		<input name='annee' id='annee' type='text' placeholder="..."		<?php if($mod) echo "value='".$etu['anneeEtudeEtu']."'"; else echo "value='".$annee."'"; ?> size='30'>	<br>
@@ -76,7 +76,7 @@
 						<legend style="text-align:center;">Entreprise</legend><br>
 						<label for="nomEnt">Nom</label>				<input name='nomEnt' id='nomEnt' type='text' placeholder="..."			<?php if($mod) echo "value='".$etu['libEnt']."'"; ?> size='30'>	<br>
 						<label for="adEnt">Adresse</label>			<input name='adEnt' id='adEnt' type='text' placeholder="..."			<?php if($mod) echo "value='".$etu['libAdEnt']."'"; ?> size='30'>		<br>
-						<label for="cpEnt">Code Postal</label>		<input name='cpEnt' id='cpEnt' type='text' placeholder="..."			<?php if($mod) echo "value='".$etu['cpEnt']."'"; ?> size='3'>	
+						<label for="cpEnt">Code Postal</label>		<input name='cpEnt' id='cpEnt' type='text' placeholder="..."			<?php if($mod) echo "value='".$etu['cpEnt']."'"; ?> size='3'>	<br>
 						<label for="villeEnt">Ville</label>			<input name='villeEnt' id='villeEnt' type='text' placeholder="..."		<?php if($mod) echo "value='".$etu['villeEnt']."'"; ?> size='15'>	<br>
 						
 						<fieldset class="right"> <!-- ENTREPRISE  RH --> 
@@ -103,8 +103,8 @@
 					<input name='do' type='hidden' <?php if ($_GET['idEtu']==-1) echo "value='create'"; else echo  "value='modif'";?> > <!-- pour rester sur la bonne page -->
 					<input name='lien' type='hidden' value="gestion"> <!-- pour rester sur la bonne page -->
 					
-					<input class="sendgest" name='button' type='submit' value='Enregistrer'>
-					<input class="sendgest" name='button' type='submit' value='Supprimer'>
+					<input class="sendgest btn" name='button' type='submit' value='Enregistrer'>
+					<input class="sendgest btn btn-danger" name='button' type='submit' value='Supprimer'>
 					
 				</form> <!-- FIN Article FORM -->
 				

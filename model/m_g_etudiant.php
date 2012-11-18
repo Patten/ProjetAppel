@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 	if(!isset($etu['photoEtu']))	$etu['photoEtu']='';
 	if(!isset($_POST['photo']))	$_POST['photo']=$etu['photoEtu'];
@@ -77,7 +77,7 @@
 
 		$exereq = mysql_query($req) or die(mysql_error());
 
-		header("location:index.php?lien=gestion");
+		?><script>document.location="index.php?lien=gestion";</script><?php
 
 	}											/* fin ajout étudiant */
 	
@@ -125,7 +125,7 @@
 			";
 		$exereq = mysql_query($req) or die(mysql_error());
 
-		header("location:index.php?lien=gestion");
+		?><script>document.location="index.php?lien=gestion";</script><?php
 
 	}				/* fin modifier étudiant
 	
@@ -155,7 +155,7 @@
 								";
 			$exereq = mysql_query($req) or die(mysql_error());	
 		}
-		header("location:index.php?lien=gestion");
+		?><script>document.location="index.php?lien=gestion";</script><?php
 		
 
 	} /* fin supprimer étudiant*/
@@ -163,7 +163,9 @@
 	/* chercher tous les étudiants */
 	function listerEtudiant()
 	{
-		$req="select idEtu, nomEtu, prenomEtu, photoEtu from etudiant";
+		$req="select et.idEtu, nomEtu, prenomEtu, photoEtu, libEnt, libSpe, telPortEtu, mailEtu from etudiant et
+				INNER JOIN entreprise en ON en.idEnt=et.idEnt
+					INNER JOIN specialisation spe ON spe.idSpe=et.idSpe";
 		$exereq = mysql_query($req) or die(mysql_error());
 	
 		while($ligne=mysql_fetch_array($exereq))

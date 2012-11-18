@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 //====Fonction pour vérifier le login et mdp====
 function estIdentifie($login, $mdp)
@@ -6,6 +6,7 @@ function estIdentifie($login, $mdp)
 	$requete ="select count(*) as nb from utilisateur where logUti='$login' and mdpUti='$mdp'";
 	$resultat =mysql_query($requete);
 	$ligne=mysql_fetch_array($resultat);
+	
 	return $ligne['nb'];
 }
 
@@ -34,7 +35,7 @@ function getAllSpe() //Récupere la liste des spécialisations
 
 function showTrombi($spe) //Récupere les photos noms et prénoms des étudiants
 {
-	$requete="select nomEtu, prenomEtu, photoEtu from etudiant where idSpe='$spe'";
+	$requete="select idEtu, nomEtu, prenomEtu, photoEtu from etudiant where idSpe='$spe'";
 	$resultat=mysql_query($requete);
 	
 	while($ligne=mysql_fetch_array($resultat))

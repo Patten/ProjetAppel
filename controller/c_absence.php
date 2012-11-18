@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 //vérification des champs concernants le cours et appel de trombi pour selectionner les absents
 
 //include des models

@@ -1,11 +1,11 @@
-﻿<?php
+<?php
 	if(!isset($_GET['photo']))	$_GET['photo']='';
 	if(!isset($_GET['idUti']))	$_GET['idUti']='-2';
 
 	/* chercher tous les utilisateurs */
 	function listerUtilisateur()
 	{
-		$req="select idUti, nomUti, prenomUti, photoUti from utilisateur";
+		$req="select idUti, nomUti, prenomUti, photoUti, telPorUti, mailUti, statutUti from utilisateur";
 		$exereq = mysql_query($req) or die(mysql_error());
 	
 		while($ligne=mysql_fetch_array($exereq))
@@ -17,7 +17,6 @@
 	}
 	
 	function ajouterUtilisateur(){
-		echo "coucou";
 		if ($_POST['statut'] != "secretaire") $_POST['statut'] = "intervenant";
 		
 		/* crÈation de l'utilisateur */
@@ -44,7 +43,7 @@
 
 		$exereq = mysql_query($req) or die(mysql_error());
 		
-		header("location:index.php?lien=gestion&qui=intervenant");
+		?><script>document.location="index.php?lien=gestion&qui=intervenant";</script><?php
 
 	}
 	
@@ -70,12 +69,10 @@
 						`photoUti` 		=  '".$_POST['photo']."'
 						WHERE  `idUti` 	= 	".$_POST['idUti']." ;
 			";
-			
-			echo $req;
 
 		$exereq = mysql_query($req) or die(mysql_error());
 		
-		header("location:index.php?lien=gestion");
+		?><script>document.location="index.php?lien=gestion";</script><?php
 
 	}				/* fin modifier Ètudiant
 	
@@ -86,7 +83,7 @@
 		$req = " DELETE FROM utilisateur WHERE idUti ='".$_GET['idUti']."'";
 		$exereq = mysql_query($req) or die(mysql_error());
 			
-		header("location:index.php?lien=gestion&qui=intervenant");
+		?><script>document.location="index.php?lien=gestion&qui=intervenant";</script><?php
 
 		
 

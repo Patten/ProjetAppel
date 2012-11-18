@@ -30,11 +30,9 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
+
 /* Général */
 body {
-	color: #e3e3e3;
-	background: #1e1e1e;
-	line-height: 1;
 	font-family: 'Arial Black',Gadget,sans-serif;
 }
 
@@ -42,6 +40,15 @@ header{
 	width:950px;
 	margin-left:auto;
 	margin-right:auto;
+}
+
+tr{
+	cursor:pointer;
+}
+
+.headerGeneral{
+	border-right: solid black 2px;
+	border-left: solid black 2px;
 }
 
 a {
@@ -53,24 +60,9 @@ a:hover, a:focus {
 	color: #FF4C00;
 }
 
-/* Navigation */
-#menu {
-	background: #000115;
-}
-#menu a {
-	margin : 10px;
-	/*padding: 0px;*/
-	color: #e2e4ff;
-}
-#menu a:hover, #menu a:focus {
-	background: #000000;
-	color: #FF4C00;
-}
-
 /* Contenu principal */
 #content {
 	color: #01020f;
-	background: #d3d4e0;
 	text-align:center;
 	font-family: 'Arial';
 }
@@ -90,25 +82,13 @@ ol, ul {
 
 
 /* --- POSITIONNEMENT --- */
-
-/* Page */
-body {
-	padding: 20px 50px; /* Voir -> Note 1 ci-dessous */
-}
-#wrap{ /*Contient le menu et le content*/
+.wrapp{ /*Contient le menu et le content*/
 	margin-left:auto;
 	margin-right:auto;
 	width:950px;
-}
-
-.deco{
-	width:950px;
-	margin-left:auto;
-	margin-right:auto;
-	margin-top:10px;
-	text-align:right;
-	text-decoration: none;
-	list-style: none;
+	border-radius: 0px 0px 10px 10px;
+	border: solid black 2px;
+	min-height: 400px;
 }
 
 /* Menu de navigation */
@@ -136,9 +116,6 @@ body {
 
 /* Contenu */
 #content {
-	margin-left: 20%; 
-	margin-bottom: 20px;
-	padding: 10px 20px;
 	
 }
 #content > :first-child {
@@ -152,25 +129,42 @@ body {
 #fieldset{
 	margin-left:auto;
 	margin-right:auto;
-	width:750px;
-	margin-top:100px;
+/*	width:750px;
+	margin-top:100px;*/
 }
 .formulaire{
 	margin-left:auto;
 	margin-right:auto;
 	width:300px;
-	background-color:#01020f;
 	text-align:right;
 }
 
 .photo{ /* div contenant photo, nom et prénom du trombi */
-
 	float:left;
 	margin:15px;
-	width:100px;
-	height:140px;
+	width:140px;
+	height:165px;
 	background-color:#eed;
+	font-family: fantasy;
 
+	/*radius : arrondi */
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+
+.photoAbs{
+	float:left;
+	margin:15px;
+	width:140px;
+	height:185px;
+	background-color:#eed;
+	font-family: fantasy;
+
+	/*radius : arrondi */
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
 }
 
 .abs{ /*recouvre la photo de l'étudiant quand il est absent*/
@@ -189,8 +183,12 @@ body {
 
 .affErreur{
 	width:950px;
-	margin-left:auto;
-	margin-right:auto;
+	margin : 10px;
+	padding: 0;
+}
+
+.connexion{
+	margin-top : 80px;
 }
 
 /* PAGES ABSENCE */
@@ -223,14 +221,47 @@ body {
 	margin-right:auto;
 	text-align:center;
 }
+
+.headGest{
+	width: 385px;
+	margin-left:150px;
+	padding: 10px 0px 0px 10px;
+	-webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+}
+
+.btnAdd{
+	margin-left: 10px;
+}
+
+#btn_gestionUti{
+	margin-bottom: 40px;
+	margin-top: 20px;
+	margin-right: 10px;
+}
+
+.nav-pills{
+	margin-left: auto;
+	margin-right: auto;
+}
+.nav-pills > li{
+	-webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+}
+
 .headGest a{
 	padding : 5px 20px 5px 20px;
 	font-family: 'Arial Black',Gadget,sans-serif;
 	text-decoration:none;
 }
 .headGest a:hover{
-	padding : 5px 20px 5px 20px;
 	background:#fff;
+}
+
+.headGest > ul > .active{
+	background: #ccc;
 }
 
 .formgest{
@@ -247,6 +278,10 @@ body {
 	margin-right:auto;
 }
 
+.tright{
+	text-align: right;
+}
+
 .left {
 	width:45%;
 	float: left;
@@ -254,6 +289,22 @@ body {
 	margin-right:auto;
 }
 
+/*menu gestion*/
 
+.menuGestion:after {
+  clear: both;
+}
+
+.menuGestion > li {
+  float: left;
+}
+
+.menuGestion > li > a {
+  padding-right: 12px;
+  padding-left: 12px;
+  margin-right: 2px;
+  line-height: 14px;
+}
 
 /* FIN PAGES GESTION */
+

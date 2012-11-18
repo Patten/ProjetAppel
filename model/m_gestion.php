@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 
 	/* toutes les fonctions de vérification de champs de saisies*/
@@ -215,7 +215,7 @@
 					NULL ,  '".$_POST['newSpe']."'
 					);";
 		$exereq = mysql_query($req) or die(mysql_error());
-		header("Location:index.php?lien=gestion&qui=spe");
+		?><script>document.location="index.php?lien=gestion&qui=spe";</script><?php
 	}
 	
 	function listerSpe(){

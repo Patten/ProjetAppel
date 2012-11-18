@@ -1,12 +1,24 @@
-﻿<header class= "headAbs">
-		
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+    
+    <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+		<script>
+		    $(function() {
+		        $( "#dateDeb" ).datepicker();
+		    });
+		    $(function() {
+		        $( "#dateFin" ).datepicker();
+		    });
+    	</script>
+
+<header class= "headAbs span8 tright">	
 	<form method="GET"> <!-- formulaire "dateDeb dateFin" + "annee specialité" dans v_listeAbsence -->
-			Du 
-			<input type="date" name="dateDeb" id="dateDeb" placeholder="AAAA-MM-JJ" <?php if($_GET['dateDeb'] != '') echo 'value="'.$_GET['dateDeb'].'"'; ?> >
+			<br><strong>Date :</strong> du 
+			<input type="text" name="dateDeb" id="dateDeb" placeholder="Date de Début" <?php /*if($_GET['dateDeb'] != '') echo 'value="'.$_GET['dateDeb'].'"';*/ ?> >
+			<br>
 			au
-			<input type="date" name="dateFin" id="dateFin" placeholder="AAAA-MM-JJ" <?php if($_GET['dateFin'] != '') echo 'value="'.$_GET['dateFin'].'"'; ?> >
+			<input type="text" name="dateFin" id="dateFin" placeholder="Date de fin" <?php /*if($_GET['dateDeb'] != '') echo 'value="'.$_GET['dateDeb'].'"';*/ ?> >
 			
-			<input type="hidden" name="lien" id="lien" value="absence"> <br>
+			<input type="hidden" name="lien" id="lien" value="absence">
 			
 			<?php if(isset($_GET['id']))
 			{

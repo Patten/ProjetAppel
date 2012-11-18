@@ -1,8 +1,7 @@
 <?php 
+
 	session_start();
 	define("KEY", "GENNEVILLIERS");
-
-
 	
 	include_once ("include/inc_connexion.php"); 
 	include ("vues/v_header.html");
@@ -23,11 +22,6 @@
 			$lien=$_GET['lien'];
 	}
 	
-	if (isset($_SESSION['statut']))
-	{
-		echo"<section class='deco'><a href='include/inc_deconnexion.php'>Déconnexion</a></section>";
-	}
-
 	
 //==================Affichage du contenu diffŽrent selon le lien passŽ par l'URL (method GET)==========================
 		

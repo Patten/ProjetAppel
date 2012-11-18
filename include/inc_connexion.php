@@ -1,7 +1,4 @@
-﻿<?php
-
-	/* test de git hub*/
-	echo 'coucou';
+<?php
 
 	/*connection pour Windows --> WAMP */
 	$serveur="localhost";
@@ -18,5 +15,9 @@
 		$connect=mysql_connect($serveur, $utilisateur, $mdp);
 	}
 	
+	//pour la db à genneviliers
+	//mysql_select_db("projet_appel2") or die("echec à la connection");
+	
+	//pour la db chez Patten
 	mysql_select_db("projet_appel") or die("echec à la connection");
 ?>

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 function getAllSpe() //Récupere la liste des spécialisations
 {
 	$tab = array();
@@ -14,11 +14,11 @@ function getAllSpe() //Récupere la liste des spécialisations
 	return $tab;
 }
 
-function showTrombi($spe, $annee) //Récupere les photos noms et prénoms des étudiants
+function showTrombiAppel($spe, $annee) //Récupere les photos noms et prénoms des étudiants
 {
 	$tab = array();
 	
-	$requete="select idEtu, nomEtu, prenomEtu, photoEtu from etudiant WHERE anneeEtudeEtu='".$annee."'"; 
+	$requete="SELECT idEtu, nomEtu, prenomEtu, photoEtu from etudiant WHERE anneeEtudeEtu='".$annee."'"; 
 	
 	// si spe <> de "toutes"
 	if ($spe <> 1 )$requete .= "AND idSpe='$spe'"; 
@@ -31,6 +31,4 @@ function showTrombi($spe, $annee) //Récupere les photos noms et prénoms des é
 	}
 
 	return $tab;
-}
-
 ?>

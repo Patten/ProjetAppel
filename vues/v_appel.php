@@ -1,29 +1,38 @@
-﻿<section>
+<section>
 
 		
 		<section id="content">
 			<fieldset id ="fieldset">
-				<legend>Cours de : <?php echo $_POST['libCours']; ?></legend>
+				<!-- <legend>Cours de : <?php echo $_POST['libCours']; ?></legend> -->
 				
 
-				<?php // remplissage de la comboBox avec les spécialisation
-					foreach ($tabTrombi as $unePhoto){
-						echo "<div name='".$unePhoto['idEtu']."' class='photo'>";
-							if($unePhoto['photoEtu']=='')	echo "<img src='images/default.jpg' width='100px' height='100px' alt='trombi'/>";
-							else							echo "<img src='images/".$unePhoto['photoEtu']."'width='100px' height='100px' alt='trombi'/>";
-							echo $unePhoto['nomEtu']."<br/>";
-							echo $unePhoto['prenomEtu'];						
-							echo "<div class='abs' name=".$unePhoto['idEtu']."></div>"; 
-						echo "</div>";	
-					}
-
+				<?php 
+						// Affichage de chaque élève étant dans la spécialité
+						echo "<div class='row'>
+									<div class='span9'>";
+									foreach ($tabTrombi as $unePhoto){
+										echo "<div name='".$unePhoto['idEtu']."' class='photo'>";
+											if($unePhoto['photoEtu']=='')	echo "<img src='images/default.jpg' width='140px' height='140px' alt='trombi'/>";
+											else							echo "<img src='images/".$unePhoto['photoEtu']."'width='140px' height='140px' alt='trombi'/>";
+											echo $unePhoto['nomEtu']." ";
+											echo $unePhoto['prenomEtu'];						
+											echo "<div class='abs' name=".$unePhoto['idEtu']."></div>"; 
+										echo "</div>";	
+									}
+						echo 		"</div>
+									<div class='span3'>
+										<h3>Liste des absents</h3>
+										<h6>Clickez sur les photos des absents</h6>
+										<hr>
+									</div>
+								</div>";
 				?>
-						<div class="clear"></div>
-						<input type="submit" onClick="confAbs()"/>	
-				
+
+
+
+
+
 				<script>
-	
-				
 				var idUtilisateur = "<?php echo $_SESSION['id']; ?>";
 				var libCours = "<?php echo $_POST['libCours']; ?>";
 				var heureDeb = "<?php echo $_POST['heureDeb']; ?>";
@@ -44,7 +53,7 @@
 					});
 
 					
-					setTimeout("confAbs()",10000); //3 600 000 pour une Heure
+					setTimeout("confAbs()",3600000); //3 600 000 pour une Heure
 					 
 					function confAbs(){ // fonction confirmation des absents
 					  
@@ -76,7 +85,7 @@
 					
 					function envoyerMail(nb){
 					
-						var chaineMail = "Bonjour, aujourd'hui il y a eu : "+ nb +" absents pendant le cours de " + libCours +" entre "+heureDeb+" et "+heureFin;											
+						var chaineMail = "Bonjour, aujourd hui il y a eu : "+ nb +" absents pendant le cours de " + libCours +" entre "+heureDeb+" et "+heureFin+"\n http://www.yakssa.free.fr";											
 					
 						$.ajax({
 							type:"POST",

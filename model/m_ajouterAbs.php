@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 		//requete appelée plusieurs fois pour ajouter les absences de tous les étudiants
 
 	/*connection pour Windows --> WAMP */

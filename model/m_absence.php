@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 	function listerAbsents(){
 		$tab = array();
@@ -55,6 +55,9 @@
 			$tab[$ligne['idAbs']] = $ligne;
 		}
 		
+		/*echo "<pre>";
+		print_r($tab);
+		echo "</pre>";*/
 		return $tab;
 	}
 	
@@ -75,6 +78,22 @@
 		header("location:index.php?lien=absence&id=".$_GET['id']);
 	
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 

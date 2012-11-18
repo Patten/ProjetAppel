@@ -1,4 +1,4 @@
-﻿<section>
+<section>
 
 		<?php
 
@@ -49,7 +49,7 @@
 						<label for="mail">Mail</label>						<input name='mail' id='mail' type='text'  placeholder="..."			<?php if($mod) echo "value='".$uti['mailUti']."'"; ?> size='30'>	<br>
 						
 						<label for="ad">Adresse</label>				<input name='ad' id='ad' type='text' placeholder="..."				<?php if($mod) echo "value='".$uti['libAdUti']."'"; ?> size='30'>		<br>
-						<label for="cp">Code Postal</label>			<input name='cp' id='cp' type='text' placeholder="..."				<?php if($mod) echo "value='".$uti['cpUti']."'"; ?> size='3'>
+						<label for="cp">Code Postal</label>			<input name='cp' id='cp' type='text' placeholder="..."				<?php if($mod) echo "value='".$uti['cpUti']."'"; ?> size='3'>			<br>
 						<label for="ville">Ville</label>			<input name='ville' id='ville' type='text' placeholder="..."		<?php if($mod) echo "value='".$uti['villeUti']."'"; ?> size='15'>		<br>
 						
 					</article> <!-- Fin Info Etudiant -->
@@ -61,8 +61,8 @@
 					<input name='lien' type='hidden' value="gestion"> <!-- pour rester sur la bonne page -->
 					<p class="clear"></p>
 					
-					<input class="sendgest" name='button' type='submit' value='Enregistrer'>
-					<input class="sendgest" name='button' type='submit' value='Supprimer'>
+					<input class="sendgest btn" name='button' type='submit' value='Enregistrer'>
+					<input class="sendgest btn btn-danger" name='button' type='submit' value='Supprimer'>
 					
 				</form> <!-- FIN Article FORM -->
 				

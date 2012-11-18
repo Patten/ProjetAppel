@@ -1,9 +1,9 @@
-﻿	<!-- début du form dans v_choixDate -->
-		
-		<input type="submit">
+	<!-- début du form dans v_choixDate -->
+		<br>
+		<input type="submit" class="btn">
 	</form>	<!-- Fin du formulaire "dateDeb dateFin" -->
 </header> <!-- Fin section formulaire -->
-
+<div class="clear"></div>
 
 <section>
 			<?php 	$_GET['idEtu']=$_GET['id'];
@@ -33,8 +33,8 @@
 						echo 'Justifié : <input type="radio" name="justif" id="justif" value="1" ';	if ($idAbs['justifAbs'])echo 'checked'; echo'>Oui
 										<input type="radio" name="justif" id="justif" value="0" ';	if (!($idAbs['justifAbs']))echo 'checked'; echo'>Non<br>';
 						echo "Motif :<textarea name='motif'  rows='3' cols='30'>".$idAbs['motifAbs']."</textarea><br> ";
-						echo 	"<input class='sendgest' name='button' type='submit' value='Enregistrer'>
-								<input class='sendgest' name='button' type='submit' value='Supprimer'>
+						echo 	"<input class='sendgest btn btn-warning' name='button' type='submit' value='Enregistrer'>
+								<input class='sendgest btn btn-danger' name='button' type='submit' value='Supprimer'>
 								<input type='hidden' name='lien' id='lien' value='absence'>
 								<input type='hidden' name='idAbs' id='idAbs' value='".$idAbs['idAbs']."'>
 								<input type='hidden' name='dateDeb' id='dateDeb' value='".$_GET['dateDeb']."'>
