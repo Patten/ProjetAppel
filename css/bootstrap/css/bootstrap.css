@@ -953,15 +953,19 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   display: inline-block;
-  height: 20px;
-  padding: 4px 6px;
+  height: 35px;
+  padding: 10px 6px;
   margin-bottom: 9px;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 20px;
   color: #555555;
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
           border-radius: 3px;
+}
+
+select{
+	  padding: 4px 6px;
 }
 
 input,

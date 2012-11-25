@@ -1,15 +1,24 @@
 <?php 
 
+/* -----------------  INDEX du projet 0 -----------------  
+
+Codé par :
+- Cédric Verger
+-Julien Ligeret
+*/
+
 	session_start();
 	define("KEY", "GENNEVILLIERS");
 	
 	include_once ("include/inc_connexion.php"); 
 	include ("vues/v_header.html");
 
-
 	
-	if(!(isset($_GET['lien'])))	{	
-			if(!(isset($_POST['lien'])))	
+	if(!(isset($_GET['lien'])))	{
+			if(isset($_SESSION['statut']) && $_SESSION['statut']=="secretaire"){
+				$lien='absence';
+			}
+			else if(!(isset($_POST['lien'])))	
 			{	
 				$lien='accueil';
 			}else
@@ -23,7 +32,7 @@
 	}
 	
 	
-//==================Affichage du contenu diffŽrent selon le lien passŽ par l'URL (method GET)==========================
+//==================Affichage du contenu différent selon le lien passé par l'URL (method GET)==========================
 		
 	switch($lien)
 	{

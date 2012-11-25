@@ -4,7 +4,7 @@
 	$serveur="localhost";
 	$utilisateur="root";
 	$mdp="";
-	$connect=mysql_connect($serveur, $utilisateur, $mdp);
+	$connect=@mysql_connect($serveur, $utilisateur, $mdp);
 	
 	/*connection pour Mac --> MAMP */
 	if ($connect== "")

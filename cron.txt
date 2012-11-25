@@ -1,0 +1,8 @@
+Cron :http://www.cronjobonline.com/
+
+appelé toutes les 5 min.
+
+Sur	http://cedric-verger.fr/projet0/model/m_cron.php
+
+id 	cedric_36_@hotmail.fr
+mdp 	lpdw

@@ -2,13 +2,21 @@
 	
 	<div class="navbar navbar-inverse">
   		<div class="navbar-inner">
-			<a class="brand" href="index.php">Accueil</a>
+  			<?php if($_SESSION['statut'] == "secretaire"){ ?>
+				<a class="brand" href="index.php?lien=absence">Accueil</a>
+			<?php
+			}
+			else
+			{
+			?>
+				<a class="brand" href="index.php?lien=accueil">Accueil</a>
+			<?php	} ?>
 			<ul class="nav">	
 				
 				 <?php if($_SESSION['statut'] == "secretaire"){ ?>
-				 	<li  <?php if($lien == 'accueil') echo 'class="active"'; ?> ><a href='index.php'>Appel</a></li>
  					<li  <?php if($lien == 'absence') echo 'class="active"'; ?> ><a href='index.php?lien=absence'>Absences</a></li>
 					<li  <?php if($lien == 'gestion') echo 'class="active"'; ?> ><a href='index.php?lien=gestion'>Gestion</a></li>
+					<li  <?php if($lien == 'accueil') echo 'class="active"'; ?> ><a href='index.php?lien=accueil'>Appel</a></li>
  				<?php } ?>
  			</ul>
  			<ul class="nav pull-right">

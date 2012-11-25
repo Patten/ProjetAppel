@@ -35,13 +35,13 @@
 		$tabTrombi = listerAbsents();
 		
 		if($_SESSION['interface']=="Mode trombinoscope"){
-			echo "<input type='button' id='btn_gestionUti' class='btn btn-primary' value='Mode tableau' rel='popover' data-content='Cliquer sur ce bouton vous permet de changer la présentation des étudiants.' data-original-title='Switchez !'style='float:right;'/>";
+			echo "<input type='button' id='btn_gestionUti' class='btn btn-primary' value='Mode tableau' rel='popover' data-content='Cliquer sur ce bouton vous permet de changer la présentation des étudiants.' data-original-title='Changez !'style='float:right;'/>";
 			echo "<br/><br/>";
 			echo"<div id='interfaceTrombi' style='display:block;'>";
 			echo "<div class='clear'></div>";
 		}
 		else{
-			echo "<input type='button' id='btn_gestionUti' class='btn btn-primary' value='Mode trombinoscope' rel='popover' data-content='Cliquer sur ce bouton vous permet de changer la présentation des étudiants.' data-original-title='Switchez !'style='float:right;'/>";
+			echo "<input type='button' id='btn_gestionUti' class='btn btn-primary' value='Mode trombinoscope' rel='popover' data-content='Cliquer sur ce bouton vous permet de changer la présentation des étudiants.' data-original-title='Changez !'style='float:right;'/>";
 			echo "<br/><br/>";
 			echo"<div id='interfaceTrombi' style='display:none;'>";
 			echo "<div class='clear'></div>";

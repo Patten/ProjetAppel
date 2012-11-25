@@ -10,7 +10,7 @@ function getCoursInter(){
 
 	$urlCalendar = "http://www.google.com/calendar/feeds/2stnclhbdc78erj5s8bitnkp3c%40group.calendar.google.com/public/basic";
 
-    $document_xml = new DomDocument;
+    $document_xml = new DomDocument(null);
     $document_xml->load($urlCalendar);
     $elements = $document_xml->getElementsByTagName('feed');
     $arbre = $elements->item(0);
@@ -116,6 +116,28 @@ function getCoursduMoment($calendar){
     return $coursDuMoment;
 }
 
+function getCoursduMomentAllInter($calendar){
+    $coursDuMoment = array();
+
+    foreach ($calendar as $cours)
+    {
+        if ($cours['heureDeb'][0] >= 0 && $cours['heureDeb'][0] <= 9)
+        {
+            $heureSup = $cours['heureDeb'];
+            $tabHeureSup = explode(':' , $heureSup);
+            $tabHeureSup[0]++;
+            if ($tabHeureSup[0] == 24) $tabHeureSup[0] = '00';
+            $heureSup = $tabHeureSup[0].':'.$tabHeureSup[1];
+
+            if($cours['date'] == date('d-m-Y') && $cours['heureDeb'] <= date('H:i') && $heureSup >= date('H:i'))
+            {
+                $coursDuMoment = $cours;
+            }
+        }
+    }
+    return $coursDuMoment;
+}
+
 function getNextCours($calendar){
     $lesCours = array();
 
@@ -126,23 +148,4 @@ function getNextCours($calendar){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function getAllCoursInter($idInter){
-
-}
 ?>

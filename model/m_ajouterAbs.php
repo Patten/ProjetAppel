@@ -18,31 +18,33 @@
 	
 	mysql_select_db("projet_appel") or die("echec à la connection");		
 		
-		$req="INSERT INTO  `absence` (
-		`idAbs` ,
-		`idUti` ,
-		`idEtu` ,
-		`jourAbs` ,
-		`hDebAbs` ,
-		`hFinAbs` ,
-		`libCoursAbs` ,
-		`justifAbs` ,
-		`motifAbs`
-		)
-		VALUES (
-		NULL ,  
-		'".$_POST['idUti']."', 
-		'".$_POST['unAbs']."',  
-		'".date("Ymd")."', 
-		'".$_POST['heureDeb']."', 
-		'".$_POST['heureFin']."',  
-		'".$_POST['libCours']."',  
-		'0',  
-		'".$_POST['motif']."'
-		);";
-		
-		
-
+		if($_POST['type']==1){
+			$req="INSERT INTO  `absence` (
+			`idAbs` ,
+			`idUti` ,
+			`idEtu` ,
+			`jourAbs` ,
+			`hDebAbs` ,
+			`hFinAbs` ,
+			`libCoursAbs` ,
+			`justifAbs` ,
+			`motifAbs`
+			)
+			VALUES (
+			NULL ,  
+			'".$_POST['idUti']."', 
+			'".$_POST['unAbs']."',  
+			'".date("Ymd")."', 
+			'".$_POST['hDeb']."', 
+			'".$_POST['hFin']."',   
+			'".$_POST['libCours']."',   
+			'0',  
+			'0'
+			);";
+		}
+		else{
+			$req = "DELETE FROM `absence` WHERE `idAbs`=".$_POST['idAbs'];
+		}
 		$exereq = mysql_query($req) or die(mysql_error());
-	
+		echo mysql_insert_id();
 ?>
