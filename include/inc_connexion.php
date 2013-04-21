@@ -19,5 +19,5 @@
 	//mysql_select_db("projet_appel2") or die("echec à la connection");
 	
 	//pour la db chez Patten
-	mysql_select_db("projet_appel") or die("echec à la connection");
+	mysql_select_db("projet_appel2") or die("echec à la connection");
 ?>

@@ -1,4 +1,8 @@
 <?php
+
+if($_SESSION['statut'] <> 'secretaire')
+	exit;
+
 //vérification des champs concernants le cours et appel de trombi pour selectionner les absents
 
 //include des models
@@ -81,7 +85,7 @@ if($_POST['qui']=='spe')
 {
 	if($_POST['button']=='Ajouter')
 	{
-		if(verifSpe())//contrôles saisies
+		if(verifSpe($_POST['newSpe']))//contrôles saisies
 			ajouterSpe();
 		else
 			echo $messError;
@@ -90,6 +94,14 @@ if($_POST['qui']=='spe')
 
 echo "";
 
+if(isset($_GET['removeSpe']))
+	removeSpe($_GET['removeSpe']);
+
+if(isset($_POST['updSpe']))
+{
+	updateSpe($_POST['idSpe'], $_POST['libSpe']);
+}
+
 /* Aff la vue */
 include("vues/v_menu.php");
 if (!($_GET['idEtu'] >= -1) && !($_GET['idUti'] >= -1))
@@ -97,9 +109,15 @@ if (!($_GET['idEtu'] >= -1) && !($_GET['idUti'] >= -1))
 else
 {
 	if ($_GET['idEtu'] >= -1)
+	{
+		include("model/m_stats.php");
+		$statsAbsEtu = getAbsByMonth($_GET['idEtu']);
 		include("vues/v_g_etudiant.php");
+	}
 	else
+	{
 		include("vues/v_g_utilisateur.php");
+	}
 }
 
 ?>

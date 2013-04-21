@@ -26,7 +26,6 @@
 
 		<input type="submit" class="btn">
 
-
 	</form>	<!-- Fin du formulaire "dateDeb dateFin annee specialité" -->
 </header> <!-- Fin section formulaire -->
 
@@ -47,12 +46,12 @@
 			echo "<div class='clear'></div>";
 		}		
 		foreach ($tabTrombi as $unEtu){
-			echo "<a class='photoAbs' href='index.php?lien=absence&id=".$unEtu['idEtu']."&dateDeb=".$_GET['dateDeb']."&dateFin=".$_GET['dateFin']."'>
+			echo "<a class='photo' href='index.php?lien=absence&id=".$unEtu['idEtu']."&dateDeb=".$_GET['dateDeb']."&dateFin=".$_GET['dateFin']."'>
 					<div name='".$unEtu['idEtu']."' alt ='trombi'>";
 						if ($unEtu['photoEtu']<>'')
-							echo "<img src='images/".$unEtu['photoEtu']."'width='140px' height='140px'/>";
+							echo "<img src='images/".$unEtu['photoEtu']."'width='170px' height='180px'/>";
 						else
-							echo "<img src='images/default.jpg' width='140px' height='140px'/>";
+							echo "<img src='images/default.jpg' width='170px' height='180px'/>";
 						echo $unEtu['prenomEtu']." ".$unEtu['nomEtu']."<br>".
 						$unEtu['nbAbs']." absence(s)
 					</div>
@@ -67,24 +66,30 @@
 
 				?>
 	
-	
-	
-	
-				<table cellpadding="0" cellspacing="0" border="0" class="display table table-hover" id="tabGestion" width="100%">
-					<thead>
-						<tr>
-							<th>Nom</th>
-							<th>Prenom</th>
-							<th><center>Nombre d'absences</center></th>
-						</tr>
-					</thead>
+				<div class='clear'></div>
+				<table class="footable">
+				<thead>
+					<tr>
+						<th data-class="expand" data-sort-initial="true">
+							Nom
+						</th>
+						<th data-hide="phone">
+							Prénom
+						</th>
+						<th data-type="numeric">
+							Nombre d'absences
+						</th>	
+						<th data-sort-ignore="true"></th>					
+					</tr>
+
 					<tbody>				
 						<?php				
 							foreach ($tabTrombi as $unEtu){					
-							echo"<tr onDblclick=document.location='index.php?lien=absence&id=".$unEtu['idEtu']."&dateDeb=".$_GET['dateDeb']."&dateFin=".$_GET['dateFin']."'>";
+							echo"<tr onDblclick=document.location=''>";
 								echo"<td>".$unEtu['nomEtu']."</td>";
 								echo"<td>".$unEtu['prenomEtu']."</td>";
 								echo"<td class='center'>".$unEtu['nbAbs']."</td>";
+								echo"<td><div onclick=document.location='index.php?lien=absence&id=".$unEtu['idEtu']."&dateDeb=".$_GET['dateDeb']."&dateFin=".$_GET['dateFin']."' class='btn btn-primary'>ouvrir</div></td>";
 							echo"</tr>";					
 						}
 						?>
@@ -129,69 +134,23 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#tabGestion').dataTable( {  
-		"oLanguage": {
-			"sDom": 'T<"clear">lfrtip',
-			"oTableTools": {
-				"sRowSelect": "multi",
-				"aButtons": [ "select_all", "select_none" ]
-			},
-			"sLengthMenu": 'Afficher <select STYLE="width:80">'+
-				  '<option value="10">10</option>'+
-				   '<option value="20">20</option>'+
-				   '<option value="30">30</option>'+
-				   '<option value="40">40</option>'+
-				   '<option value="50">50</option>'+
-				   '<option value="-1">Tous</option>'+
-				   '</select> résultats',
-		   
-			"sZeroRecords": "Aucun résultat - désolé",
-			"sInfo": "Affichage de _START_ à _END_ sur _TOTAL_ résultats",
-			"sInfoEmpty": "Showing 0 to 0 sur 0 records",
-			"sInfoFiltered": "(filtered from _MAX_ total records)",
-			"sSearch": "Rechercher :",
-			"oPaginate": {
-				"sNext": "Suivant",
-				"sPrevious": "Précédent"
-			}			
-		}
-	});
-				
-	var oTable;
-	var giRedraw = false;
-
-	$("#tabGestion tbody").click(function(event) {
-		$(oTable.fnSettings().aoData).each(function (){
-			$(this.nTr).removeClass('row_selected');
-		});
-		$(event.target.parentNode).addClass('row_selected');
-	});
-		
-	/* permet de deselectionner les lignes */
-	$('#delete').click( function() {
-		var anSelected = fnGetSelected( oTable );
-		oTable.fnDeleteRow( anSelected[0] );
-	} );
-
-	oTable = $('#tabGestion').dataTable();
-
-	/* recupere la ligne selectionnée */
-	function fnGetSelected( oTableLocal )
-	{
-		var aReturn = new Array();
-		var aTrs = oTableLocal.fnGetNodes();
-		
-		for ( var i=0 ; i<aTrs.length ; i++ )
-		{
-			if ( $(aTrs[i]).hasClass('row_selected') )
-			{
-				aReturn.push( aTrs[i] );
+	$(function() {
+		$('table').footable({
+			breakpoints: {
+			    mamaBear: 1200,
+			    babyBear: 600
 			}
-		}
-		return aReturn;
-	}
+		});
+
+		$('#myTab a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		}).on('shown', function (e) {	
+			$('.tab-pane.active table').trigger('footable_resize');
+		});
+	});
 		
-	$('#btn_gestionUti').popover({placement:'right', trigger:'hover'}) // permet d'afficher les message d'aides quand on clique sur un bouton d'aide
+	$('#btn_gestionUti').popover({placement:'left', trigger:'hover'}) // permet d'afficher les message d'aides quand on clique sur un bouton d'aide
 			
 });
 

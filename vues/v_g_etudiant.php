@@ -45,7 +45,13 @@
 					</article> <!-- Fin Photo -->
 
 					<article><!-- Info étudiant -->
-						<?php echo '<a href="index.php?lien=absence&id='.$_GET['idEtu'].'"'; ?> ><input type="button" class="btn btn-warning" value="consulter les absences"></a><br><br>
+						<?php 
+						if ($_GET['idEtu'] <> '-1')
+						{
+							echo '<a href="index.php?lien=absence&id='.$_GET['idEtu'].'"'; ?> ><input type="button" class="btn btn-warning" value="consulter les absences"></a><br><br>
+						<?php
+						}
+						?>
 						<div class="control-group">
 							<div class="controls">																	
 								<label for="nom"class="control-label">Nom</label>
@@ -60,10 +66,18 @@
 						</div>	
 																
 							
+						<?php
+							if($mod)
+							{
+								$date = explode("-", $etu['dateNaissEtu']);
+								$date = $date[2]."/".$date[1]."/".$date[0];
+							}
+						?>
+
 						<div class="control-group">
 							<div class="controls">
 								<label for="datenaiss" class="control-label">Date de naissance</label>																																	
-								<input name='datenaiss' class='date' id='datenaiss' type='datetime' placeholder="Format AAAA-MM-JJ"		<?php if($mod) echo "value='".$etu['dateNaissEtu']."'"; ?>  > <br>								
+								<input name='datenaiss' class='date' id='datenaiss' type='datetime' placeholder="Format JJ/MM/AAAA"		<?php if($mod) echo "value='".$date."'"; ?>  > <br>								
 							</div>
 						</div>
 
@@ -230,7 +244,10 @@
 			</article>
 			<div class="clear"></div>
 		</section> <!-- END CONTENT -->
-</section>
+
+		<fieldset class="left span4 offset"> <!-- ENTREPRISE  Maître d'apprentissage --> 
+			<legend>Statistiques</legend>
+		
 
 <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
 <script>
@@ -321,3 +338,49 @@
 			$('#save').attr('disabled', 'disabled');
     }
 </script>
+
+	<?php
+		if (!empty($statsAbsEtu)):
+	?>
+
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Nb absences total', 'Nb absences non justifiées'],
+
+			<?php
+				$txt = '';
+				foreach ($statsAbsEtu as $name => $nbAbs) {
+					$txt .= "['$name', ".$nbAbs['total'].", ".$nbAbs['justif']."],";
+				}
+				$txt = substr($txt, 0, -1);
+				echo $txt;
+			?>
+        ]);
+
+        var options = {
+          title: 'Absences de l\'étudiant sur les 12 derniers mois',
+          hAxis: {		title: '',
+          				 titleTextStyle: {color: 'red'},
+          				 minValue: 0
+          		}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+
+    <div id="chart_div" style="width: 550px; height: 350px;"></div>
+
+    <?php
+    else:
+    	echo "<span class='redMessage'>Cet élève n'a pas été absent durant les 12 derniers mois</span>";
+    endif;
+    ?>
+    </section>
+

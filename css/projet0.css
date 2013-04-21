@@ -1,12 +1,7 @@
 ﻿/* Général */
 body {
 	font-family: 'Arial Black',Gadget,sans-serif;
-}
-
-header{
-	width:950px;
-	margin-left:auto;
-	margin-right:auto;
+	background: #000 !important;
 }
 
 tr{
@@ -16,6 +11,14 @@ tr{
 .headerGeneral{
 	border-right: solid black 2px;
 	border-left: solid black 2px;
+	background: #000;
+}
+
+.headerGeneral>img{
+	max-width: 950px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 a {
@@ -93,12 +96,6 @@ ol, ul {
 }
 
 
-#fieldset{
-	margin-left:auto;
-	margin-right:auto;
-/*	width:750px;
-	margin-top:100px;*/
-}
 .formulaire{
 	margin-left:auto;
 	margin-right:auto;
@@ -113,29 +110,38 @@ ol, ul {
 .photo{ /* div contenant photo, nom et prénom du trombi */
 	float:left;
 	margin:15px;
-	width:140px;
-	height:190px;
-	background-color:#eed;
-	font-family: fantasy;
+	width:170px;
+	height:239px;
+	font-family: 'Fondamento', cursive;
 
-	/*radius : arrondi */
-	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;
-	border-radius: 8px;
+	border:1px solid #eee;
 }
 
-.photoAbs{
+.photoG{
 	float:left;
 	margin:15px;
-	width:140px;
-	height:185px;
-	background-color:#eed;
-	font-family: fantasy;
+	width:170px;
+	height:205px !important;
+	font-family: 'Fondamento', cursive;
 
-	/*radius : arrondi */
-	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;
-	border-radius: 8px;
+	border:1px solid #eee;
+}
+
+.btnAppel{
+	width:50%!important;
+    border-radius: 0px!important;
+}
+
+.btnPhotos{
+	margin-top: 10px;
+}
+
+.divAppel{
+	background: url("../images/ressouces/redCross.png");
+}
+
+.listAbs{
+	min-width: 200px;
 }
 
 .clear{
@@ -150,6 +156,13 @@ ol, ul {
 
 .connexion{
 	margin-top : 80px;
+	padding:0 40px 0 40px!important;
+}
+
+.redMessage{
+	color:red;
+	font-size: 10pt;
+	margin-left: 10px;
 }
 
 /* PAGES ABSENCE */
@@ -204,8 +217,6 @@ ol, ul {
 }
 
 .headGest{
-	width: 385px;
-	margin-left:150px;
 	padding: 10px 0px 0px 10px;
 	-webkit-border-radius: 10px;
      -moz-border-radius: 10px;
@@ -216,10 +227,13 @@ ol, ul {
 	margin-left: 10px;
 }
 
+.time{
+	width: 50px;
+}
+
 #btn_gestionUti{
-	margin-bottom: 40px;
-	margin-top: 20px;
-	margin-right: 10px;
+	margin-bottom: 20px;
+	margin-left: 10px;
 }
 
 .nav-pills{
@@ -239,6 +253,9 @@ ol, ul {
 }
 .headGest a:hover{
 	background:#fff;
+	-webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
 }
 
 .headGest > ul > .active{
@@ -309,3 +326,36 @@ ol, ul {
 	float: left;
 }
 
+
+
+/*TEST*/
+body{
+	min-width: 300px;
+}
+.container{
+	/*border:1px solid red;*/
+	background: #fff;
+	/*width:100%!important;*/
+
+}
+.row-fluid [class*="span"] {
+   /* background: rgba(200, 54, 54, 0.5);*/
+}
+
+/*.row [class*="span"] {
+    background: rgba(230, 204, 54, 0.5);
+}*/
+
+.bs-docs-example {
+    background-color: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #9DA0A4;
+    content: "Example";
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+    padding: 3px 7px;
+
+    top: -1px;
+}

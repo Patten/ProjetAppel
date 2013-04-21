@@ -5,6 +5,9 @@
 	if(!isset($_GET['idEtu']))	$_GET['idEtu']='-2';
 	if(!isset($_POST['idSpe']))	$_POST['idSpe']='1';
 
+
+
+
 	function ajouteretudiant(){
 		/* recherche d'un id dispo pour créer une entreprise*/
 		$req="SELECT MAX(idEnt) as id FROM entreprise";
@@ -40,6 +43,10 @@
 				'".$_POST['nomrh']."',  '".$_POST['prenomrh']."',  '".$_POST['telrh']."',  '".$_POST['mailrh']."'
 				);		";
 		$exereq = mysql_query($req) or die(mysql_error());
+
+
+		$date = explode('/',$_POST['datenaiss']);
+		$dateNaiss = $date[2].'-'.$date[1].'-'.$date[0];
 		
 		/* création d'étudiant */
 		$req="	INSERT INTO  `etudiant` (
@@ -62,7 +69,7 @@
 				NULL ,  
 				'".$_POST['nom']."',  
 				'".$_POST['prenom']."',  
-				'".$_POST['datenaiss']."', 
+				'".$dateNaiss."', 
 				'".$_POST['telp']."', 
 				'".$_POST['telf']."',  
 				'".$_POST['mail']."',  
@@ -106,11 +113,16 @@
 					WHERE  `idEnt` =  ".$idEnt['idEnt'].";	";		
 		$exereq = mysql_query($req) or die(mysql_error());
 
+
+		$date = explode('/',$_POST['datenaiss']);
+		$dateNaiss = $date[2].'-'.$date[1].'-'.$date[0];
+
+
 		/* modification de l'étudiant */
 		$req="	UPDATE  `etudiant` SET  
 						`nomEtu` 		=  '".$_POST['nom']."',
 						`prenomEtu` 	=  '".$_POST['prenom']."',
-						`dateNaissEtu`	=  '".$_POST['datenaiss']."',
+						`dateNaissEtu`	=  '".$dateNaiss."',
 						`telPortEtu`	=  '".$_POST['telp']."',
 						`telFixEtu` 	=  '".$_POST['telf']."',
 						`mailEtu` 		=  '".$_POST['mail']."',

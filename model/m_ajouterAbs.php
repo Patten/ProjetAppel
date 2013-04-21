@@ -2,21 +2,12 @@
 		//requete appelée plusieurs fois pour ajouter les absences de tous les étudiants
 
 	/*connection pour Windows --> WAMP */
-	$serveur="localhost";
-	$utilisateur="root";
-	$mdp="";
+	$serveur="46.218.144.13";
+	$utilisateur="cedri374874";
+	$mdp="28JEACcz";
 	$connect=mysql_connect($serveur, $utilisateur, $mdp);
 	
-	/*connection pour Mac --> MAMP */
-	if ($connect== "")
-	{
-		$serveur="localhost";
-		$utilisateur="root";
-		$mdp="root";
-		$connect=mysql_connect($serveur, $utilisateur, $mdp);
-	}
-	
-	mysql_select_db("projet_appel") or die("echec à la connection");		
+	mysql_select_db("cedri374874") or die("echec à la connection");	
 		
 		if($_POST['type']==1){
 			$req="INSERT INTO  `absence` (

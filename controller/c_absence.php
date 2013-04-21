@@ -1,4 +1,8 @@
 <?php
+
+	if($_SESSION['statut'] <> 'secretaire')
+		exit;
+
 	//vérification des champs concernants le cours et appel de trombi pour selectionner les absents
 
 	//include des models
@@ -18,6 +22,12 @@
 	if(!(isset($_GET['dateFin'])))	$_GET['dateFin']=date('d/m/Y');
 	if(!(isset($_POST['button'])))	$_POST['button']='';
 
+	if ($_POST['button']=='Enregistrer')
+		updateAbs();
+	
+	if ($_POST['button']=='Supprimer')
+		deleteAbs();
+		
 	//include des vues
 	include("vues/v_menu.php");
 
@@ -32,11 +42,6 @@
 		else
 			include("vues/v_listeAbsences.php");
 			
-		if ($_POST['button']=='Enregistrer')
-			updateAbs();
-		
-		if ($_POST['button']=='Supprimer')
-			deleteAbs();
 			
 		if ($_POST['button']=='Exporter en CSV')
 		{

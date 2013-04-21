@@ -4,7 +4,7 @@
 		
 		<section id="content"> <!-- CONTENT -->
 		
-		<div class="span6">
+		<div class="span8 offset2">
 			<header class="headGest">
 				<ul class="nav nav-pills">
 					<li <?php if($_GET['qui']=='etudiant') echo 'class="active"'; ?> ><a href='index.php?lien=gestion&qui=etudiant'>Etudiant</a></li>
@@ -21,16 +21,17 @@
 				function affNouveau($modTab)
 				{
 					if($modTab){
-						echo"<div class='clear'></div>
+						echo"
 							<div class='btnAdd'><a href='index.php?lien=gestion&"; if ($_GET['qui']=='etudiant') echo "idEtu=-1"; else echo "idUti=-1"; echo "'>
-							<div style='float:left;' class='btn btn-success'>Ajouter un nouveau</div>
-							</a></div>";
-						
+			
+							</a></div>
+						";
 					}
 					else{
+
 					echo "<a href='index.php?lien=gestion&"; if ($_GET['qui']=='etudiant') echo "idEtu=-1"; else echo "idUti=-1"; echo "'>
-							<div name='newEtu' class='photo'>
-								<img src='images/new.jpg 'width='140px' height='140px'/>
+							<div name='newEtu' class='photoG' style='height:165px;'>
+								<img src='images/new.jpg' width='165px'/>
 								Nouveau<br>	
 							</div>
 						</a>";
@@ -53,23 +54,24 @@
 						echo "<div class='clear'></div>";
 					}
 
+
+					affNouveau(false);
 					foreach ($tabTrombi as $unEtu){
 						echo "<a href='index.php?lien=gestion&idEtu=".$unEtu['idEtu']."'>
-								<div name='".$unEtu['idEtu']."' class='photo' style='height:165px;'>";
+								<div name='".$unEtu['idEtu']."' class='photoG' style='height:165px;'>";
 									if($unEtu['photoEtu']=='')
 									{
-										echo "<img src='images/default.jpg' width='140' height='140'  alt ='trombi'/>";
+										echo "<img src='images/default.jpg' width='170' height='180'  alt ='trombi'/>";
 									}
 									else
 									{
-										echo "<img src='images/".$unEtu['photoEtu']."' width='140px' height='140px'  alt ='trombi'/>";
+										echo "<img src='images/".$unEtu['photoEtu']."' width='170px' height='180px'  alt ='trombi'/>";
 									}
 									echo $unEtu['prenomEtu']." ".$unEtu['nomEtu']."<br>	
 
 								</div>
 							</a>";
 					}
-					affNouveau(false);
 					
 					echo "</div>";
 				
@@ -78,39 +80,53 @@
 						echo"<div id='interfaceTableau' style='display:block;'>";
 					else
 						echo"<div id='interfaceTableau' style='display:none;'>";
-
+						affNouveau(true);
+						echo"<br/><br/><br/>";
 					?>
 		
-					<table cellpadding="0" cellspacing="0" border="0" class="display table table-hover" id="tabGestion" width="100%">
+
+					<table class="footable">
 						<thead>
 							<tr>
-								<th>Nom</th>
-								<th>Prenom</th>
-								<th>Entreprise</th>
-								<th>Telephone</th>
-								<th>Mail</th>
-								<th>Spécialité</th>
+								<th data-class="expand" data-sort-initial="true">
+									<span title="table sorted by this column on load">Nom</span>
+								</th>
+								<th>
+									<span title="sorting disabled on this column">Prénom</span>
+								</th>
+								<th data-hide="phone">
+									Entreprise
+								</th>
+								<th data-hide="phone">
+									Téléphone
+								</th>
+								<th data-hide="phone,tablet">
+									Mail
+								</th>
+								<th data-hide="phone,tablet">
+									Spécialité
+								</th>
+								<th data-sort-ignore="true"></th>
 							</tr>
 						</thead>
 					<tbody>
-					
+					  		
 
-					<?php
-					affNouveau(true);
-					echo"<br/><br/><br/>";
-									
-					foreach ($tabTrombi as $unUti){						
-					echo "<tr onDblclick=document.location='index.php?lien=gestion&idEtu=".$unUti['idEtu']."'>";
-						echo"<td>".$unUti['nomEtu']."</td>";
-						echo"<td>".$unUti['prenomEtu']."</td>";
-						echo"<td>".$unUti['libEnt']."</td>";
-						echo"<td>".$unUti['telPortEtu']."</td>";
-						echo"<td>".$unUti['mailEtu']."</td>";
-						echo"<td>".$unUti['libSpe']."</td>";
-					echo"</tr>";					
-					}
+						<?php
+										
+						foreach ($tabTrombi as $unUti){						
+						echo "<tr>";							
+							echo"<td>".$unUti['nomEtu']."</td>";
+							echo"<td>".$unUti['prenomEtu']."</td>";
+							echo"<td>".$unUti['libEnt']."</td>";
+							echo"<td>".$unUti['telPortEtu']."</td>";
+							echo"<td>".$unUti['mailEtu']."</td>";
+							echo"<td>".$unUti['libSpe']."</td>";
+							echo"<td><div onclick=document.location='index.php?lien=gestion&idEtu=".$unUti['idEtu']."' class='btn btn-primary'>ouvrir</div></td>";
+						echo"</tr>";					
+						}
 
-					?>
+						?>
 						</tbody>
 					</table>
 					</div>
@@ -133,23 +149,22 @@
 						echo "<div class='clear'></div>";
 					}
 				
-					
+					affNouveau(false);
 					foreach ($tabTrombi as $unUti){
 						echo "<a href='index.php?lien=gestion&idUti=".$unUti['idUti']."'>
-								<div name='".$unUti['idUti']."' class='photo' style='height:165px;'>";
+								<div name='".$unUti['idUti']."' class='photoG' style='height:165px;'>";
 									if($unUti['photoUti']=='')
 									{
-										echo "<img src='images/default.jpg' width='140' height='140'  alt ='trombi'/>";
+										echo "<img src='images/default.jpg' width='170' height='180'  alt ='trombi'/>";
 									}
 									else
 									{
-										echo "<img src='images/".$unUti['photoUti']."' width='140px' height='140px'  alt ='trombi'/>";
+										echo "<img src='images/".$unUti['photoUti']."' width='170px' height='180px'  alt ='trombi'/>";
 									}
 									echo $unUti['prenomUti']." ".$unUti['nomUti']."<br>	
 								</div>
 							</a>";
 					}
-					affNouveau(false);
 					echo "</div>";
 
 
@@ -160,29 +175,41 @@
 
 					?>
 		
-					<table cellpadding="0" cellspacing="0" border="0" class="display table table-hover" id="tabGestion" width="100%">
+					<table class="footable">
 						<thead>
 							<tr>
-								<th>Nom</th>
-								<th>Prenom</th>
-								<th>tel Port</th>
-								<th>Mail</th>
-								<th>Statut</th>
-
+								<th data-class="expand" data-sort-initial="true">
+									Nom
+								</th>
+								<th data-hide="phone,tablet">
+									Prénom
+								</th>
+								<th data-hide="phone">
+									Téléphone port
+								</th>
+								<th>
+									Mail
+								</th>
+								<th data-hide="phone">
+									Statut
+								</th>
+								<th data-sort-ignore="true"></th>
 							</tr>
 						</thead>
-						<tbody>				
+					<tbody>
+					  					
 							<?php
 							affNouveau(true);
 							echo"<br/><br/><br/>";
 											
 							foreach ($tabTrombi as $unUti){						
-								echo "<tr onDblclick=document.location='index.php?lien=gestion&idUti=".$unUti['idUti']."'>";
+								echo "<tr>";
 									echo"<td>".$unUti['nomUti']."</td>";
 									echo"<td>".$unUti['prenomUti']."</td>";
 									echo"<td>".$unUti['telPorUti']."</td>";
 									echo"<td>".$unUti['mailUti']."</td>";
-									echo"<td>".$unUti['statutUti']."</td>";						
+									echo"<td>".$unUti['statutUti']."</td>";	
+									echo"<td><div onclick=document.location='index.php?lien=gestion&idUti=".$unUti['idUti']."' class='btn btn-primary'>ouvrir</div></td>";					
 								echo"</tr>";					
 							}
 							?>
@@ -196,24 +223,53 @@
 				if ($_GET['qui']=='spe')
 				{
 					$tab = listerSpe();
-					echo "<div class='clear'><br>";					
+					echo "<div class='clear'></div><br>";					
 					?>
-					<table cellpadding="0" cellspacing="0" border="0" class="display table table-hover" id="tabG" width="100%">
+					<div class="span4 offset4">
+					<table class="footable">
 						<thead>
 							<tr>
-								<th><center>Liste des spécialités</center></th>
+								<th data-class="expand" data-sort-initial="true">
+									Liste des spécialités
+								</th>	
+								<th data-sort-ignore="true"></th>							
 							</tr>
 						</thead>
-						<tbody>				
+					<tbody>		
 							<?php										
-							foreach($tab as $uneSpe){						
+							foreach($tab as $key => $uneSpe){						
 								echo "<tr>";
 									echo "<td class='center'>".$uneSpe."</td>";									
-								echo"</tr>";					
+									echo "<td>";
+										echo '<a href="#myModal'.$key.'" role="button" data-toggle="modal">';
+											echo "<div title='modifier' class='icon-pencil'></div>   ";
+										echo '</a>';
+										echo "   <a title='supprimer' class='icon-remove'  href='index.php?lien=gestion&removeSpe=$key' onclick='return confirmAction()'></a>";										
+									echo "</td>";									
+								echo "</tr>";
+
+
+							echo	'<div id="myModal'.$key.'" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									  <div class="modal-header">
+									    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									    <h3 id="myModalLabel">Modifier la spécialité</h3>
+									  </div>
+									  <form method="post">
+										  <div class="modal-body">
+										  	<input type="hidden" name="updSpe">
+										  	<input type="hidden" name="idSpe" value="'.$key.'">
+										    <input type="text" name="libSpe" value="'.$uneSpe.'"
+										  </div>
+										  <div class="modal-footer">
+										    <input type="submit" class="btn btn-primary" value="Modifier">
+										  </div>
+										</form>
+									</div>';
 							}
 							?>
 						</tbody>
 					</table>
+				</div>
 					<?php
 		
 					echo "<br><br>Ajouter une spécialité :
@@ -229,6 +285,28 @@
 		
 <script type="text/javascript" charset="utf-8">
 
+function confirmAction(){
+      var confirmed = confirm("Etes vous sûr de vouloir supprimer?");
+      return confirmed;
+}
+
+$('td').each(function( index ) {
+	if($(this).html() == ""){
+		$(this).html('---');
+	}
+});
+
+ $(function() {
+	$('table').footable();
+  
+	$('#myTab a').click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	}).on('shown', function (e) {	
+		$('.tab-pane.active table').trigger('footable_resize');
+	});
+});
+
 $(document).ready(function() {
   
 	$("#btn_gestionUti").click(function() { //Quand on clique sur le bouton de changement d'interface
@@ -237,8 +315,7 @@ $(document).ready(function() {
 		$.ajax({
 			type: "POST",
 			url: "model/m_interface.php", 
-			data: "interface=" + $("#btn_gestionUti").val()      
-			
+			data: "interface=" + $("#btn_gestionUti").val()      			
 		});
 		
 		//Changement du texte du bouton
@@ -257,70 +334,8 @@ $(document).ready(function() {
 			$('#interfaceTableau').css('display','block');//on affiche le tableau
 		}
 	});
-
-	$('#tabGestion').dataTable( {  
-		"oLanguage": {
-			"sDom": 'T<"clear">lfrtip',
-			"oTableTools": {
-				"sRowSelect": "multi",
-				"aButtons": [ "select_all", "select_none" ]
-			},
-			"sLengthMenu": 'Afficher <select STYLE="width:80">'+
-				  '<option value="10">10</option>'+
-				   '<option value="20">20</option>'+
-				   '<option value="30">30</option>'+
-				   '<option value="40">40</option>'+
-				   '<option value="50">50</option>'+
-				   '<option value="-1">Tous</option>'+
-				   '</select> résultats',
-		   
-			"sZeroRecords": "Aucun résultat - désolé",
-			"sInfo": "Affichage de _START_ à _END_ sur _TOTAL_ résultats",
-			"sInfoEmpty": "Showing 0 to 0 sur 0 records",
-			"sInfoFiltered": "(filtered from _MAX_ total records)",
-			"sSearch": "Rechercher :",
-			"oPaginate": {
-				"sNext": "Suivant",
-				"sPrevious": "Précédent"
-			}			
-		}
-	});
-				
-	var oTable;
-	var giRedraw = false;
-
-	$("#tabGestion tbody").click(function(event) {
-		$(oTable.fnSettings().aoData).each(function (){
-			$(this.nTr).removeClass('row_selected');
-		});
-		$(event.target.parentNode).addClass('row_selected');
-	});
 		
-	/* permet de deselectionner les lignes */
-	$('#delete').click( function() {
-		var anSelected = fnGetSelected( oTable );
-		oTable.fnDeleteRow( anSelected[0] );
-	} );
-
-	oTable = $('#tabGestion').dataTable();
-
-	/* recupere la ligne selectionnée */
-	function fnGetSelected( oTableLocal )
-	{
-		var aReturn = new Array();
-		var aTrs = oTableLocal.fnGetNodes();
-		
-		for ( var i=0 ; i<aTrs.length ; i++ )
-		{
-			if ( $(aTrs[i]).hasClass('row_selected') )
-			{
-				aReturn.push( aTrs[i] );
-			}
-		}
-		return aReturn;
-	}
-		
-	$('#btn_gestionUti').popover({placement:'right', trigger:'hover'}) // permet d'afficher les message d'aides quand on clique sur un bouton d'aide
+	$('#btn_gestionUti').popover({placement:'left', trigger:'hover'}) // permet d'afficher les message d'aides quand on clique sur un bouton d'aide
 			
 });
 

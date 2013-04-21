@@ -13,21 +13,17 @@ $champFr = array(	'jourAbs' => 'Date',
 
 //connexion à la bd
 /*connection pour Windows --> WAMP */
-	$serveur="localhost";
+	$serveur="46.218.144.13";
+	$utilisateur="cedri374874";
+	$mdp="Le MDP";
+
+	/*$serveur="localhost";
 	$utilisateur="root";
-	$mdp="";
+	$mdp="";	*/
+
 	$connect=mysql_connect($serveur, $utilisateur, $mdp);
-	
-	/*connection pour Mac --> MAMP */
-	if ($connect== "")
-	{
-		$serveur="localhost";
-		$utilisateur="root";
-		$mdp="root";
-		$connect=mysql_connect($serveur, $utilisateur, $mdp);
-	}
-	
-	mysql_select_db("projet_appel") or die("echec à la connection");
+
+	mysql_select_db("cedri374874") or die("echec à la connection");
 
 //déclaration du document pdf
 $pdf = new FPDF('P','mm','A4');
@@ -35,7 +31,7 @@ $pdf->AddPage();
 $pdf->SetFont('Arial','B',16);
 
 //requete SQL
-$req = "SELECT nomEtu, prenomEtu FROM Etudiant WHERE idEtu='".$_GET['id']."'";
+$req = "SELECT nomEtu, prenomEtu FROM etudiant WHERE idEtu='".$_GET['id']."'";
 $exereq = mysql_query($req) or die(mysql_error());
 $ligne=mysql_fetch_array($exereq);
 
@@ -45,8 +41,8 @@ $pdf->Ln();
 $pdf->SetFont('Arial','',10);
 
 $req = "SELECT ab.jourAbs, ab.hDebAbs , ab.hFinAbs, ab.libCoursAbs, ab.justifAbs, ab.motifAbs, nomUti, prenomUti	
-				FROM Absence ab 
-					INNER JOIN Utilisateur ut ON ut.idUti=ab.idUti
+				FROM absence ab 
+					INNER JOIN utilisateur ut ON ut.idUti=ab.idUti
 						WHERE idEtu='".$_GET['id']."'";
 
 $exereq = mysql_query($req) or die(mysql_error());

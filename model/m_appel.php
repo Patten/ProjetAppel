@@ -8,7 +8,7 @@ function getAllSpe() //Récupere la liste des spécialisations
 	
 	while($ligne=mysql_fetch_array($resultat))
 	{
-		$tab[]=$ligne;
+		$tab[$ligne['libSpe']]=$ligne;
 	}
 	
 	return $tab;
@@ -31,4 +31,6 @@ function showTrombiAppel($spe, $annee) //Récupere les photos noms et prénoms d
 	}
 
 	return $tab;
+}
+
 ?>

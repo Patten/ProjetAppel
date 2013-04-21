@@ -1,8 +1,8 @@
 <?php
 	session_start();
 
-
-		$_SESSION['interface'] = $_POST['interface'];
+	// mode trombinoscope ou mode tableau
+	$_SESSION['interface'] = $_POST['interface'];
 	
 
 ?>

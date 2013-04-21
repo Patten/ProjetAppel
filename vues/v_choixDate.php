@@ -33,12 +33,12 @@
 
 <header class= "headAbs span8 tright">	
 	<form method="GET"> <!-- formulaire "dateDeb dateFin" + "annee specialité" dans v_listeAbsence -->
-		<br><strong>Pour rechercher des absences, veuillez saisir les dates entre lesquelles elles se situent ainsi que la spécialité et la promotion qu'elles concernent.</strong></br>
-			<br><strong>Date :</strong> du 
-			<input type="text" name="dateDeb" id="dateDeb" placeholder="Date de Début" <?php /*if($_GET['dateDeb'] != '') echo 'value="'.$_GET['dateDeb'].'"';*/ ?> >
+		<br><h4>Rechercher une absence :</h4>
+			<strong>Date :</strong> du 
+			<input type="text" name="dateDeb" id="dateDeb" placeholder="Date de Début" <?php if(isset($_GET['dateDeb'])) echo 'value="'.$_GET['dateDeb'].'"'; ?> >
 			<br>
 			au
-			<input type="text" name="dateFin" id="dateFin" placeholder="Date de fin" <?php /*if($_GET['dateDeb'] != '') echo 'value="'.$_GET['dateDeb'].'"';*/ ?> >
+			<input type="text" name="dateFin" id="dateFin" placeholder="Date de fin" <?php if(isset($_GET['dateFin'])) echo 'value="'.$_GET['dateFin'].'"'; ?> >
 			
 			<input type="hidden" name="lien" id="lien" value="absence">
 			

@@ -141,9 +141,27 @@ function getCoursduMomentAllInter($calendar){
 function getNextCours($calendar){
     $lesCours = array();
 
-    //var_dump($calendar);
-
     return $lesCours;
+}
+
+function affChoiceHour($txt, $name){
+?>
+    <div>
+        <?php echo $txt; ?>
+        <select class='time' <?php echo "name='".$name."Hours'" ?>>
+            <?php
+                for ($i = 8; $i < 18; $i++)
+                {
+                    echo "<option>".$i."</option>";
+                }
+            ?>
+        </select>h 
+        <select class='time' <?php echo "name='".$name."Minutes'" ?>>
+            <option>00</option>
+            <option>30</option>
+        </select>
+    </div>
+<?php
 }
 
 

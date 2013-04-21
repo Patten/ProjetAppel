@@ -5,18 +5,18 @@
 Codé par :
 - Cédric Verger
 -Julien Ligeret
-*/
+*/ 
 
 	session_start();
 	define("KEY", "GENNEVILLIERS");
-	
+
 	include_once ("include/inc_connexion.php"); 
 	include ("vues/v_header.html");
 
 	
 	if(!(isset($_GET['lien'])))	{
 			if(isset($_SESSION['statut']) && $_SESSION['statut']=="secretaire"){
-				$lien='absence';
+				$lien='accueil';
 			}
 			else if(!(isset($_POST['lien'])))	
 			{	
@@ -61,6 +61,11 @@ Codé par :
 			include("controller/c_absence.php");
 			break;
 		}	
+		case 'stats':
+		{
+			include("controller/c_stats.php");
+			break;
+		}
 		case 'confirmerAjout' :
 		{
 			include("controller/c_confirmerAjout.php");

@@ -52,9 +52,9 @@
 		return true;
 	}
 	
-	function verifSpe()
+	function verifSpe($lib)
 	{
-		if (!(verifText($_POST['newSpe']))) return false;
+		if (!(verifText($lib))) return false;
 		return true;
 	}
 	
@@ -221,12 +221,27 @@
 	function listerSpe(){
 		$tab = array();
 	
-		$req = " 	SELECT * FROM `specialisation`";
+		$req = "SELECT * FROM `specialisation`";
 		$exereq = mysql_query($req) or die(mysql_error());
 		while($ligne=mysql_fetch_array($exereq))
 			$tab[$ligne['idSpe']] = $ligne['libSpe'];
 			
 		return $tab;
+	}
+
+	function removeSpe($id){
+		$req = "UPDATE `etudiant` SET `idSpe`= 1 WHERE idSpe = $id";
+		$exereq = mysql_query($req) or die(mysql_error());
+
+		$req = "DELETE FROM specialisation WHERE idSpe='$id'";
+		$exereq = mysql_query($req) or die(mysql_error());
+		?><script>document.location="index.php?lien=gestion&qui=spe";</script><?php
+	}
+
+	function updateSpe($id, $lib){
+		$req = "UPDATE specialisation SET libSpe = '".$lib."' WHERE idSpe ='".$id."'";
+		$exereq = mysql_query($req) or die(mysql_error());
+		?><script>document.location="index.php?lien=gestion&qui=spe";</script><?php
 	}
 	
 

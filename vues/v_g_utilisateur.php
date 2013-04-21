@@ -54,8 +54,11 @@
 						</div>	
 						<div class="control-group">
 							<div class="controls">
-								<label for="statut" class="control-label" >Statut</label>				
-								<input name='statut' class='text' id='statut' type='text' placeholder="secretaire/intervenant"		<?php if($mod) echo "value='".$uti['statutUti']."'"; ?> size='30'> <br>
+								<label for="statut" class="control-label" >Statut</label>
+								<select name="statut">
+									<option value="intervenant" <?php if($mod && $uti['statutUti']=="intervenant") echo "selected"; ?>>Intervenant</option>
+									<option value="secretaire" <?php if($mod && $uti['statutUti']=="secretaire") echo "selected"; ?>>Secrétaire</option>
+								</select>
 							</div>
 						</div>	
 						<label for="log">Login</label>				<input name='log'	 id='log' type='text'  placeholder="..."			<?php if($mod) echo "value='".$uti['logUti']."'"; ?> size='30'>	<br>
